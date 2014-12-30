@@ -20,9 +20,9 @@ body {
     font-weight: 300;
     color: $text-color;
     background-color: $background-color;
+    background-image: url("/assets/images/background.png");
+    background-position: top center;
 }
-
-
 
 /**
  * Set `margin-bottom` to maintain vertycal rhythm
