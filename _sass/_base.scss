@@ -24,6 +24,10 @@ body {
     background-position: top center;
 }
 
+html, body {
+    height: 100%;
+}
+
 /**
  * Set `margin-bottom` to maintain vertycal rhythm
  */
@@ -147,7 +151,11 @@ pre {
     }
 }
 
-
+#container {
+  min-height: 100%;
+  margin-bottom: -116px;
+  position: relative;
+}
 
 /**
  * Wrapper
@@ -160,7 +168,7 @@ pre {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     background-color: #E4DEDE;
-    @extend %clearfix;
+   @extend %clearfix;
 
     @include media-query($on-laptop) {
         max-width: -webkit-calc(800px - (#{$spacing-unit}));
@@ -170,7 +178,9 @@ pre {
     }
 }
 
-
+.page-content .wrapper {
+  padding-bottom: 116px;
+}
 
 /**
  * Clearfix
