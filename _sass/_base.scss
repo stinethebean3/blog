@@ -169,6 +169,7 @@ pre {
     padding-right: $spacing-unit;
     padding-left: $spacing-unit;
     background-color: #E4DEDE;
+    position: relative;
    @extend %clearfix;
 
     @include media-query($on-laptop) {
