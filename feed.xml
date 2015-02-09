@@ -6,9 +6,106 @@
 </description>
     <link>http://stinethebean.hashbang.sh/</link>
     <atom:link href="http://stinethebean.hashbang.sh/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 27 Jan 2015 16:30:41 -0800</pubDate>
-    <lastBuildDate>Tue, 27 Jan 2015 16:30:41 -0800</lastBuildDate>
+    <pubDate>Mon, 09 Feb 2015 15:39:17 -0800</pubDate>
+    <lastBuildDate>Mon, 09 Feb 2015 15:39:17 -0800</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Bash Script for Simple Screenshot Utility</title>
+        <description>&lt;p&gt;Hello!&lt;/p&gt;
+
+&lt;p&gt;Today’s post is less artsy and less projecty. I’m going to be walking through a bash script I wrote. My hope is to be able to explain it to people who are still in the learning stages, much like I am.&lt;/p&gt;
+
+&lt;p&gt;I have been (slowly, but surely) making my way through the JavaScript lesson on &lt;a href=&quot;http://www.codecademy.com/&quot;&gt;Codecademy&lt;/a&gt;. There’s hints and a link to a Q&amp;amp;A forum, but sometimes I get help from friends through IRC. (Come hang out with us. Go to &lt;a href=&quot;http://hashbang.sh&quot;&gt;hashbang.sh&lt;/a&gt; and follow the command). When I get help from friends, I can pretty easily give them the code through places like &lt;a href=&quot;http://pastebin.com&quot;&gt;Pastebin&lt;/a&gt; and &lt;a href=&quot;http://pae.st&quot;&gt;pae.st&lt;/a&gt;, but usually my problem is stemming from unclear instructions (codecademy does well, but sometimes I think being so far away from the beginning there’s some miscommunication). Once I’ve given my friend a link to the code I then either have to paraphrase what the instructions are or copy the instructions to a google doc and send that to them somehow. It just takes too long and can be somewhat frustrating. You might be wondering, “why don’t you just ‘print screen’?” well, I have the image, but they still don’t. I still need to upload it somewhere, send them a way to get there, etc etc. This is where I started brainstorming a solution. &lt;/p&gt;
+
+&lt;p&gt;First thing was to figure out the steps I wanted my future script to do.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;It would need to create a new folder like .screenshots, but only if it wasn’t already created (you know, for the 2nd, 3rd, 4th, etc time around).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;I would need a variable for a unique file name. Easiest is probably the date and time, so for example 2015-02-09-16-25-33.png. &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It would need to import the image and save it to the .screenshot folder with the generated filename.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It would need to make a url so that I could share the screenshot and, to make sharing even easier, already have the url in my clipboard so all I’d have to do after selecting my screenshot is paste it where I want. &lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Most, if not all, scripts will have variables. Basically just like what you learn in your first algebra class and probably even before then. It’s just like 1/2b * h to find the area of a triangle. b meaning the base and h meaning the height. And you just substitute the numbers in. Turns out the majority of this screenshot script is variables. You’ll see that at the beginning of my script I have my list of variables. This is so a new person using my script only has to change the specific names of things once instead of every time they show up in the script.  &lt;/p&gt;
+
+&lt;p&gt;Here’s a &lt;a href=&quot;https://github.com/stinethebean3/screenshot&quot;&gt;link&lt;/a&gt; to my script on github for you to follow along.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Make a folder only if it doesn’t already exist. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;After a quick Google search I found that &lt;code&gt;mkdir -p &quot;VARIABLE&quot;&lt;/code&gt; is all that is needed. &lt;a href=&quot;http://stackoverflow.com/questions/59838/check-if-a-directory-exists-in-a-shell-script&quot;&gt;Stack overflow&lt;/a&gt; had the answer. &lt;code&gt;mkdir&lt;/code&gt; is a command used to “make (a) directory” and &lt;code&gt;-p&lt;/code&gt; “means make parent directories as needed.”&lt;/p&gt;
+
+&lt;p&gt;After &lt;code&gt;mkdir -p&lt;/code&gt; you’d put the directory name, but it’s a variable, so you’d change it at the top where the list of variables are. Mine is in my home folder under the folder name of .screenshot (a . in front of a file/folder will make it hidden).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mkdir -p &lt;span class=&quot;s2&quot;&gt;&amp;quot;$SCREENSHOT_DIR&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I also made a symbolic link for a shortcut command to only have to type &lt;code&gt;ss&lt;/code&gt; instead of &lt;code&gt;screenshot&lt;/code&gt; each time I wanted to run the script just by writing this command in the terminal.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ln -s screenshot.sh ss
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Import (save) the screenshot to the folder. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This step is pretty simple. It’s just the word &lt;code&gt;import&lt;/code&gt; and then the variable for your directory/filename. The / represents the inside of the folder. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;import &lt;span class=&quot;s2&quot;&gt;&amp;quot;$SCREENSHOT_DIR/$SCREENSHOT_FILE&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The filename will be a variable because each time you take a screenshot the image will need to have a different name else it the 2nd screenshot will overwrite the 1st one.  I went with the date and time down to the seconds because it is possbile you may want to take multiple screenshots in a minute. So the variable becomes&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;SCREENSHOT_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;$(date +%y-%m-%d-%H-%M-%S).png&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Copy the file to a public directory on a web server for easy sharing. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The command for that is &lt;code&gt;scp&lt;/code&gt; which means “secure copy” (to another computer). &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;scp &lt;span class=&quot;s2&quot;&gt;&amp;quot;$SCREENSHOT_DIR/$SCREENSHOT_FILE&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;$SSH_USERNAME@$SSH_HOSTNAME:$PUBLIC_FOLDER&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;This is copying the file, which is found in that specific directory, over to your server. I decided to go with my own public webserver over something like &lt;a href=&quot;imgur.com&quot;&gt;Imgur&lt;/a&gt; because imgur may not always be here (or might change their API a.k.a. how to post to their website). I can however make sure that my own personal server stays up. &lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Echo the url and send to clipboard&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you were to type &lt;code&gt;ss&lt;/code&gt; into the command line in a terminal it would output the url there, just as sort of a check and balances that it worked. But you don’t have to go into the terminal to run this command. I use the &lt;a href=&quot;http://awesome.naquadah.org/&quot;&gt;Awesome window manager&lt;/a&gt; and just have to press win-r for run and type &lt;code&gt;ss&lt;/code&gt; there. Most window managers have a similar shortcut to “quick run” a command. (Alt+F2 does the same thing in Ubuntu for instance).&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;echo &quot;$FULL_URL&quot; | xclip&lt;/code&gt; is there to send the url to your clipboard so you only have to paste the url. &lt;/p&gt;
+
+&lt;p&gt;When you run the command you’re cursor will become a crosshair. Just click and pull what you want to screenshot. It doesn’t even have to be the whole page. Then it’s already created the filename and copied it to your clipboard. Easy-peasy!&lt;/p&gt;
+
+&lt;p&gt;Here’s a random &lt;a href=&quot;http://stinethebean.hashbang.sh/15-02-09-15-34-43.png&quot;&gt;screenshot&lt;/a&gt; I took while finalizing this blog post!&lt;/p&gt;
+
+&lt;p&gt;Bye!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 09 Feb 2015 15:00:00 -0800</pubDate>
+        <link>http://stinethebean.hashbang.sh/bash/script/simple/coding/screenshot/2015/02/09/screenshot.html</link>
+        <guid isPermaLink="true">http://stinethebean.hashbang.sh/bash/script/simple/coding/screenshot/2015/02/09/screenshot.html</guid>
+        
+        
+        <category>bash</category>
+        
+        <category>script</category>
+        
+        <category>simple</category>
+        
+        <category>coding</category>
+        
+        <category>screenshot</category>
+        
+      </item>
     
       <item>
         <title>Soda Can Earrings</title>

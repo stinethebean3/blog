@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bash Script for Simple Screenshot Utility</title>
+    <meta name="description" content="Blog of Random art projects. Painting, Drawing, Sewing, Technology, Etc.
+">
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="canonical" href="http://stinethebean.hashbang.sh/bash/script/simple/coding/screenshot/2015/02/09/screenshot.html">
+</head>
+
+
+  <body>
+    <div id="container">
+       <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Wild and Radiant Me</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/Links/">Links</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+       <div class="page-content">
+         <div class="wrapper">
+           <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Bash Script for Simple Screenshot Utility</h1>
+    <p class="post-meta">Feb 9, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>Hello!</p>
+
+<p>Today’s post is less artsy and less projecty. I’m going to be walking through a bash script I wrote. My hope is to be able to explain it to people who are still in the learning stages, much like I am.</p>
+
+<p>I have been (slowly, but surely) making my way through the JavaScript lesson on <a href="http://www.codecademy.com/">Codecademy</a>. There’s hints and a link to a Q&amp;A forum, but sometimes I get help from friends through IRC. (Come hang out with us. Go to <a href="http://hashbang.sh">hashbang.sh</a> and follow the command). When I get help from friends, I can pretty easily give them the code through places like <a href="http://pastebin.com">Pastebin</a> and <a href="http://pae.st">pae.st</a>, but usually my problem is stemming from unclear instructions (codecademy does well, but sometimes I think being so far away from the beginning there’s some miscommunication). Once I’ve given my friend a link to the code I then either have to paraphrase what the instructions are or copy the instructions to a google doc and send that to them somehow. It just takes too long and can be somewhat frustrating. You might be wondering, “why don’t you just ‘print screen’?” well, I have the image, but they still don’t. I still need to upload it somewhere, send them a way to get there, etc etc. This is where I started brainstorming a solution. </p>
+
+<p>First thing was to figure out the steps I wanted my future script to do.</p>
+
+<ul>
+  <li>
+    <p>It would need to create a new folder like .screenshots, but only if it wasn’t already created (you know, for the 2nd, 3rd, 4th, etc time around).</p>
+  </li>
+  <li>
+    <p>I would need a variable for a unique file name. Easiest is probably the date and time, so for example 2015-02-09-16-25-33.png. </p>
+  </li>
+  <li>
+    <p>It would need to import the image and save it to the .screenshot folder with the generated filename.</p>
+  </li>
+  <li>
+    <p>It would need to make a url so that I could share the screenshot and, to make sharing even easier, already have the url in my clipboard so all I’d have to do after selecting my screenshot is paste it where I want. </p>
+  </li>
+</ul>
+
+<p>Most, if not all, scripts will have variables. Basically just like what you learn in your first algebra class and probably even before then. It’s just like 1/2b * h to find the area of a triangle. b meaning the base and h meaning the height. And you just substitute the numbers in. Turns out the majority of this screenshot script is variables. You’ll see that at the beginning of my script I have my list of variables. This is so a new person using my script only has to change the specific names of things once instead of every time they show up in the script.  </p>
+
+<p>Here’s a <a href="https://github.com/stinethebean3/screenshot">link</a> to my script on github for you to follow along.</p>
+
+<ul>
+  <li>Make a folder only if it doesn’t already exist. </li>
+</ul>
+
+<p>After a quick Google search I found that <code>mkdir -p "VARIABLE"</code> is all that is needed. <a href="http://stackoverflow.com/questions/59838/check-if-a-directory-exists-in-a-shell-script">Stack overflow</a> had the answer. <code>mkdir</code> is a command used to “make (a) directory” and <code>-p</code> “means make parent directories as needed.”</p>
+
+<p>After <code>mkdir -p</code> you’d put the directory name, but it’s a variable, so you’d change it at the top where the list of variables are. Mine is in my home folder under the folder name of .screenshot (a . in front of a file/folder will make it hidden).</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mkdir -p <span class="s2">&quot;$SCREENSHOT_DIR&quot;</span></code></pre></div>
+
+<p>I also made a symbolic link for a shortcut command to only have to type <code>ss</code> instead of <code>screenshot</code> each time I wanted to run the script just by writing this command in the terminal.</p>
+
+<pre><code>ln -s screenshot.sh ss
+</code></pre>
+
+<ul>
+  <li>Import (save) the screenshot to the folder. </li>
+</ul>
+
+<p>This step is pretty simple. It’s just the word <code>import</code> and then the variable for your directory/filename. The / represents the inside of the folder. </p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">import <span class="s2">&quot;$SCREENSHOT_DIR/$SCREENSHOT_FILE&quot;</span></code></pre></div>
+
+<p>The filename will be a variable because each time you take a screenshot the image will need to have a different name else it the 2nd screenshot will overwrite the 1st one.  I went with the date and time down to the seconds because it is possbile you may want to take multiple screenshots in a minute. So the variable becomes</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">SCREENSHOT_FILE</span><span class="o">=</span><span class="s2">&quot;$(date +%y-%m-%d-%H-%M-%S).png&quot;</span></code></pre></div>
+
+<ul>
+  <li>Copy the file to a public directory on a web server for easy sharing. </li>
+</ul>
+
+<p>The command for that is <code>scp</code> which means “secure copy” (to another computer). </p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">scp <span class="s2">&quot;$SCREENSHOT_DIR/$SCREENSHOT_FILE&quot;</span> <span class="s2">&quot;$SSH_USERNAME@$SSH_HOSTNAME:$PUBLIC_FOLDER&quot;</span></code></pre></div>
+
+<p>This is copying the file, which is found in that specific directory, over to your server. I decided to go with my own public webserver over something like <a href="imgur.com">Imgur</a> because imgur may not always be here (or might change their API a.k.a. how to post to their website). I can however make sure that my own personal server stays up. </p>
+
+<ul>
+  <li>Echo the url and send to clipboard</li>
+</ul>
+
+<p>If you were to type <code>ss</code> into the command line in a terminal it would output the url there, just as sort of a check and balances that it worked. But you don’t have to go into the terminal to run this command. I use the <a href="http://awesome.naquadah.org/">Awesome window manager</a> and just have to press win-r for run and type <code>ss</code> there. Most window managers have a similar shortcut to “quick run” a command. (Alt+F2 does the same thing in Ubuntu for instance).</p>
+
+<p>The <code>echo "$FULL_URL" | xclip</code> is there to send the url to your clipboard so you only have to paste the url. </p>
+
+<p>When you run the command you’re cursor will become a crosshair. Just click and pull what you want to screenshot. It doesn’t even have to be the whole page. Then it’s already created the filename and copied it to your clipboard. Easy-peasy!</p>
+
+<p>Here’s a random <a href="http://stinethebean.hashbang.sh/15-02-09-15-34-43.png">screenshot</a> I took while finalizing this blog post!</p>
+
+<p>Bye!</p>
+
+  </article>
+
+</div>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'stinethebean'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
+         </div>
+       </div>
+    </div>
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Wild and Radiant Me</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>Wild and Radiant Me</li>
+          <li><a href="mailto:cdevlin23.cd@gmail.com">cdevlin23.cd@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/stinethebean3">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">stinethebean3</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/stinethebean">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">stinethebean</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">Blog of Random art projects. Painting, Drawing, Sewing, Technology, Etc.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
