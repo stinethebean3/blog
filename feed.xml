@@ -6,9 +6,60 @@
 </description>
     <link>http://stinethebean.hashbang.sh/</link>
     <atom:link href="http://stinethebean.hashbang.sh/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 09 Feb 2015 15:39:17 -0800</pubDate>
-    <lastBuildDate>Mon, 09 Feb 2015 15:39:17 -0800</lastBuildDate>
+    <pubDate>Fri, 03 Jul 2015 18:16:48 -0700</pubDate>
+    <lastBuildDate>Fri, 03 Jul 2015 18:16:48 -0700</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>Sound to Light Soldering Kit</title>
+        <description>&lt;p&gt;It’s been a little while! I got a job as a cashier at Whole Foods to make me have more of a sort of schedule/make a bit of money. But having a job also makes you a bit more tired and while I’ve been having lots of ideas run around in my head I haven’t really created those ideas into tangible things. Excuses, excuses.  &lt;/p&gt;
+
+&lt;p&gt;A couple weeks ago I put together another little soldering kit my husband bought me apparently months ago, but forgot to give it to me. This one contains a microphone and some LEDs so when you make noise near it the LEDs light up. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/stl1.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl1_thumb.jpg&quot; alt=&quot;Kit1&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;/assets/images/stl2.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl2_thumb.jpg&quot; alt=&quot;Kit2&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;These kits from &lt;a href=&quot;http://www.vellemanusa.com/home/&quot;&gt;Velleman&lt;/a&gt; and ones from &lt;a href=&quot;http://www.sparkfun.com&quot;&gt;SparkFun&lt;/a&gt; are great for if you are just getting started with learning how to solder or even if you are skilled.&lt;/p&gt;
+
+&lt;p&gt;The kit comes with all the parts. The only extra things you need are solder and a soldering iron.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/stl3.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl3_thumb.jpg&quot; alt=&quot;Kit3&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;/assets/images/stl4.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl4_thumb.jpg&quot; alt=&quot;Kit4&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;This kit is basically just pictures. I guess you could say it’s a little IKEA in that aspect, but it’s pretty simple. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/stl6.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl6_thumb.jpg&quot; alt=&quot;Solder1&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;/assets/images/stl7.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl7_thumb.jpg&quot; alt=&quot;Solder2&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It just goes part by part, reminding you which parts you need to pay attention to positive and negative polarities (they have different length pins). &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/stl8.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl8_thumb.jpg&quot; alt=&quot;Solder3&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;/assets/images/stl9.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl9_thumb.jpg&quot; alt=&quot;Solder4&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So yea, you just solder it all together, give it power, and then speak or make some sort of noise next to the microphone. What’s cool is that the LEDs actually will slowly become brighter as the sound becomes louder. &lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/images/stl10.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl10_thumb.jpg&quot; alt=&quot;Solder5&quot; /&gt;&lt;/a&gt; &lt;a href=&quot;/assets/images/stl11.jpg&quot;&gt;&lt;img src=&quot;/assets/images/stl11_thumb.jpg&quot; alt=&quot;Solder6&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We actually have a big LED cube to build…maybe we can hook it up to a microphone and make it play to music…&lt;/p&gt;
+
+&lt;p&gt;Well, that was just a quick project to get me back into blogging. I have a list of blogs along with a list of projects. Hopefully I can get them done. Motivation is welcomed. &lt;/p&gt;
+
+&lt;p&gt;Bye!  &lt;/p&gt;
+</description>
+        <pubDate>Fri, 03 Jul 2015 19:00:00 -0700</pubDate>
+        <link>http://stinethebean.hashbang.sh/solder,/quick,/easy,/kit,/light,/sound/2015/07/03/soundtolight.html</link>
+        <guid isPermaLink="true">http://stinethebean.hashbang.sh/solder,/quick,/easy,/kit,/light,/sound/2015/07/03/soundtolight.html</guid>
+        
+        
+        <category>solder,</category>
+        
+        <category>quick,</category>
+        
+        <category>easy,</category>
+        
+        <category>kit,</category>
+        
+        <category>light,</category>
+        
+        <category>sound</category>
+        
+      </item>
     
       <item>
         <title>Bash Script for Simple Screenshot Utility</title>
